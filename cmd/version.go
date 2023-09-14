@@ -25,9 +25,9 @@ func versionCmd() *cobra.Command {
 
 func printVersion(short bool) {
 	if short {
-		fmt.Println("Version: 0.0.1")
+		fmt.Printf("Version: %s\n", version)
 	} else {
-		fmt.Println("Version: 0.0.1")
-		fmt.Println("Build: Build Hash")
+		fmt.Printf("Version: %s\n", version)
+		fmt.Printf("Build: %s\n", commitHash)
 	}
 }

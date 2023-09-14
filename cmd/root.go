@@ -14,6 +14,8 @@ const (
 )
 
 var (
+	version, commitHash = "none", "none" // will be replaced during build with linker flags
+
 	rootCmd = &cobra.Command{
 		Use:   appName,
 		Short: shortAppDesc,

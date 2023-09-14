@@ -1,4 +1,4 @@
-module github.com/tomberch/awscli
+module github.com/tomberch/aws-console-tui
 
 go 1.21.1
 
