@@ -1,10 +1,9 @@
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/cobra"
+	"github.com/tomberch/aws-console-tui/internal/service"
 )
 
 const (
@@ -26,8 +25,9 @@ var (
 
 func init() {
 	rootCmd.AddCommand(versionCmd())
-	// initK9sFlags()
-	// initK8sFlags()
+
+	rootCmd.PersistentFlags().String("profile", "", "AWS profile to be used to create a configuration.")
+
 }
 
 func Execute() {
@@ -37,6 +37,15 @@ func Execute() {
 }
 
 func run(cmd *cobra.Command, args []string) error {
-	fmt.Println("Hello, I am here")
+	profile, err := cmd.Flags().GetString("profile")
+
+	if err != nil {
+		log.Fatal().
+			Err(err).
+			Msgf("Unable to fetch flag 'profile'")
+	}
+
+	service.Login(profile)
+
 	return nil
 }
